@@ -3,6 +3,7 @@ body {
 }
 #question-card {
     cursor: pointer;
+    transition: background 0.5s ease-in-out;
 }
 #top-row {
     height: 30%;

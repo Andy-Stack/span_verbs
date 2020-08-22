@@ -33,9 +33,7 @@ $(document).ready( () => {
             engToSpan = !engToSpan;
             wordIdx = getNextWordIdx();
             $('#question-card').popover('hide');
-            $('#question-card').fadeToggle(0);
             $('#question-card').addClass('text-white bg-success');
-            $('#question-card').fadeToggle(500);
             setTimeout(() => nextQuestion(wordIdx,engToSpan,language), 1500);
             if (currentScore > highScore){highScore = currentScore; localStorage.setItem('highScore', highScore)}
         }
