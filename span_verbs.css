@@ -2,9 +2,11 @@ body {
     background-color: #e9ecef;
 }
 #question-card {
-    cursor: pointer;
-    transition: background 0.5s ease-in-out;
-    transition: color 0.5s ease-in-out;    
+    cursor: pointer;  
+    -webkit-transition: color, background-color 0.2s ease-in-out;
+    -moz-transition: color, background-color 0.2s ease-in-out;
+    -o-transition: color, background-color 0.2s ease-in-out;
+    transition: color, background-color 0.2s ease-in-out;
 }
 #top-row {
     height: 30%;
