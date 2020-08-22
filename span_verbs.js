@@ -2,7 +2,7 @@
 var currentScore = 0;
 var highScore = localStorage.getItem('highScore') || 0;
 var wordIdx = 0;
-var engToSpan = false; //true = user must translate from english to spanish
+var engToSpan = true; //true = user must translate from english to spanish
 var language = 'english';
 
 $(document).ready( () => { 
@@ -31,6 +31,7 @@ function getNextWordIdx(){
 
 // <--- retrieve next question --->
 function nextQuestion(){
+    engToSpan = !engToSpan;
     wordIdx = getNextWordIdx();
     $('#answer').val('');
     $('#answer').focus();
@@ -54,7 +55,6 @@ function submitAnswer(){
     //check if answer is correct
     if (verbs[wordIdx][engToSpan ? 0 : 1].includes($('#answer').val().trim().toLowerCase())) { 
         currentScore++;
-        engToSpan = !engToSpan;
         $('#question-card').addClass('text-white bg-success');
         setTimeout(() => nextQuestion(), 1500);
         //update highscore if necessary
