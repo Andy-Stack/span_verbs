@@ -1,6 +1,9 @@
 body {
     background-color: #e9ecef;
 }
+.responsive {
+    min-width: 500px;
+}
 #question-card {
     cursor: pointer;  
     -webkit-transition: color, background-color 0.2s ease-in-out;
@@ -8,10 +11,14 @@ body {
     -o-transition: color, background-color 0.2s ease-in-out;
     transition: color, background-color 0.2s ease-in-out;
 }
-#top-row {
-    height: 30%;
-}
 #wrong-answer {
     color: red;
     display: none;
+}
+
+@media only screen and (max-width: 520px) {
+    .responsive {
+        min-width: 100%;
+        padding: 0 1em;
+    }
 }
