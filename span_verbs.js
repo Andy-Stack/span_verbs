@@ -11,15 +11,26 @@ $(document).ready( () => {
     $('#high-score').text(`Highest Streak: ${highScore}`);
     nextQuestion();
 
+    //populate verb table
+    setUpVerbTable();
+
     //call change language and set current language to return value
     $('#language').click(() => changeLanguage());
 
     //answer submission
     $('#submit-answer').click( () => submitAnswer());
     $('#answer').keypress((e) => {if (e.which == 13){submitAnswer()}});
-    
+
     //skip question
     $('#skip-question').click( () => skipQuestion());
+
+    //filter modal verb table
+    $("#verbFilter").on("keyup", function(){
+        let value = $(this).val().toLowerCase();
+        $("#verbsTbody tr").filter(function(){
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        });
+    });
 })
 
 // <--- utility functions --->
@@ -85,15 +96,27 @@ function changeLanguage(){
         language = 'english';
         $('#language').text('Español');
         $('#submit-answer').text('Submit');
-        $('#answer').attr('placeholder','Translate...');
+        $('#answer').attr('placeholder','Translate..');
         $('#answer-title').text(`Translate to ${engToSpan ? 'Spanish:' : 'English:'}`);
+        //verb list modal
+        $('#verbFilter').attr('placeholder', 'Search..')
+        $('#verbsModalLabel').text('Verbs');
+        $('#vLstBtn').text('Verb List');
+        $('#thSpan').text('Spanish');
+        $('#thEng').text('English');
     }
     else {
         language = 'spanish';
         $('#language').text('English');
         $('#submit-answer').text('Enviar');
-        $('#answer').attr('placeholder','Traducir...');
+        $('#answer').attr('placeholder','Traducir..');
         $('#answer-title').text(`Traducir a ${engToSpan ? 'Español:' : 'Ingles:'}`);
+        //verb list modal
+        $('#verbFilter').attr('placeholder', 'Buscar..')
+        $('#verbsModalLabel').text('Verbos');
+        $('#vLstBtn').text('Lista de Verbos');
+        $('#thSpan').text('Español');
+        $('#thEng').text('Ingles');
     }
     updateScores();
     $('#answer').focus();
@@ -108,5 +131,15 @@ function updateScores(){
     else {
         $('#current-score').text(`Current Streak: ${currentScore}`);
         $('#high-score').text(`Highest Streak: ${highScore}`);
+    }
+}
+
+// <--- populate verb table --->
+function setUpVerbTable(){
+    verbArr = Object.values(verbs);
+    for (const verb of verbArr){
+        let tr = `<tr><td>${capitalise(verb[0].join(', '))}</td>` +
+            `<td>${capitalise(verb[1].join(', '))}</td></tr>`;
+        $('#verbsTbody').append(tr);
     }
 }
