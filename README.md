@@ -5,3 +5,5 @@ Currently only the first 25 most common verbs are included. Translations are mad
 A language option is included so that Spanish speakers can practice learning the English equivalents.
 
 May be updated occasionaly.
+
+This project and others are hosted/demonstrated [here](https://andy-stack.github.io/).
