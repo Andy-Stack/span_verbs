@@ -4,6 +4,7 @@ var highScore = localStorage.getItem('highScore') || 0;
 var wordIdx = 0;
 var engToSpan = true; //true = user must translate from english to spanish
 var language = 'english';
+var submitted = false;
 
 $(document).ready( () => { 
     //setup game
@@ -18,11 +19,11 @@ $(document).ready( () => {
     $('#language').click(() => changeLanguage());
 
     //answer submission
-    $('#submit-answer').click( () => submitAnswer());
-    $('#answer').keypress((e) => {if (e.which == 13){submitAnswer()}});
+    $('#submit-answer').click(() => {if (!submitted){submitAnswer()}});
+    $('#answer').keypress((e) => {if (e.which == 13 && !submitted){submitAnswer()}});
 
     //skip question
-    $('#skip-question').click( () => skipQuestion());
+    $('#skip-question').click(() => skipQuestion());
 
     //filter modal verb table
     $("#verbFilter").on("keyup", function(){
@@ -42,6 +43,7 @@ function getNextWordIdx(){
 
 // <--- retrieve next question --->
 function nextQuestion(){
+    submitted = false;
     engToSpan = !engToSpan;
     wordIdx = getNextWordIdx();
     $('#answer').val('');
@@ -63,6 +65,7 @@ function capitalise(words){
 
 // <--- submit answer --->
 function submitAnswer(){
+    submitted = true;
     //check if answer is correct
     if (verbs[wordIdx][engToSpan ? 0 : 1].includes($('#answer').val().trim().toLowerCase())) { 
         currentScore++;
@@ -78,6 +81,7 @@ function submitAnswer(){
         currentScore = 0;
         $('#wrong-answer').fadeIn();
         setTimeout(() => $('#wrong-answer').fadeOut(), 2000);
+        submitted = false;
     }
     updateScores();
 }
