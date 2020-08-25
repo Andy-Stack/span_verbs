@@ -2,7 +2,7 @@ var verbs = {
     0:[['ser','estar'],['to be']], 
     1:[['tener','haber'],['to have']], 
     2:[['pensar'],['to think']], 
-    3:[['venir','llegar'],['to come']], 
+    3:[['venir'],['to come']], 
     4:[['hacer'],['to do','to make']], 
     5:[['poder'],['to be able','can']], 
     6:[['decir'],['to say','to tell']], 
@@ -23,5 +23,6 @@ var verbs = {
     21:[['dejar'],['to leave','to abandon','to let','to allow']], 
     22:[['seguir'],['to follow','to continue']], 
     23:[['encontrar'],['to find','to encounter']], 
-    24:[['llamar'],['to call','to name']]
+    24:[['llamar'],['to call','to name']],
+    25:[['llegar'],['to arrive','to reach']]
 }
