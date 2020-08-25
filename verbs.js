@@ -11,7 +11,7 @@ var verbs = {
     9:[['dar'],['to give']], 
     10:[['saber'],['to know']], 
     11:[['querer'],['to want','to love']], 
-    12:[['llegar'],['to arrive','to come','to reach']], 
+    12:[['llegar'],['to arrive','to reach']], 
     13:[['pasar'],['to pass','to spend','to happen']], 
     14:[['deber'],['to owe','must','should','ought to']], 
     15:[['poner'],['to put','to place','to set']], 
@@ -23,6 +23,5 @@ var verbs = {
     21:[['dejar'],['to leave','to abandon','to let','to allow']], 
     22:[['seguir'],['to follow','to continue']], 
     23:[['encontrar'],['to find','to encounter']], 
-    24:[['llamar'],['to call','to name']],
-    25:[['llegar'],['to arrive','to reach']]
+    24:[['llamar'],['to call','to name']]
 }
